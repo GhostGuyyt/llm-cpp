@@ -1,5 +1,8 @@
 # llm-cpp
 
+[![Star History Chart](https://api.star-history.com/svg?repos=Mattbusel/llm-cpp&type=Date)](https://star-history.com/#Mattbusel/llm-cpp)
+
+
 ![C++17](https://img.shields.io/badge/C%2B%2B-17-blue.svg)
 ![MIT License](https://img.shields.io/badge/license-MIT-green.svg)
 ![26 Libraries](https://img.shields.io/badge/libraries-26-orange.svg)
@@ -153,6 +156,9 @@ Each library is a single `.hpp` file. Copy what you need:
 
 ```bash
 # Core
+
+[![Star History Chart](https://api.star-history.com/svg?repos=Mattbusel/llm-cpp&type=Date)](https://star-history.com/#Mattbusel/llm-cpp)
+
 curl -O https://raw.githubusercontent.com/Mattbusel/llm-stream/main/include/llm_stream.hpp
 curl -O https://raw.githubusercontent.com/Mattbusel/llm-retry/main/include/llm_retry.hpp
 curl -O https://raw.githubusercontent.com/Mattbusel/llm-cost/main/include/llm_cost.hpp
@@ -161,6 +167,9 @@ curl -O https://raw.githubusercontent.com/Mattbusel/llm-format/main/include/llm_
 curl -O https://raw.githubusercontent.com/Mattbusel/llm-json/main/include/llm_json.hpp
 
 # Data
+
+[![Star History Chart](https://api.star-history.com/svg?repos=Mattbusel/llm-cpp&type=Date)](https://star-history.com/#Mattbusel/llm-cpp)
+
 curl -O https://raw.githubusercontent.com/Mattbusel/llm-embed/main/include/llm_embed.hpp
 curl -O https://raw.githubusercontent.com/Mattbusel/llm-rag/main/include/llm_rag.hpp
 curl -O https://raw.githubusercontent.com/Mattbusel/llm-rank/main/include/llm_rank.hpp
@@ -169,6 +178,9 @@ curl -O https://raw.githubusercontent.com/Mattbusel/llm-parse/main/include/llm_p
 curl -O https://raw.githubusercontent.com/Mattbusel/llm-batch/main/include/llm_batch.hpp
 
 # Ops
+
+[![Star History Chart](https://api.star-history.com/svg?repos=Mattbusel/llm-cpp&type=Date)](https://star-history.com/#Mattbusel/llm-cpp)
+
 curl -O https://raw.githubusercontent.com/Mattbusel/llm-log/main/include/llm_log.hpp
 curl -O https://raw.githubusercontent.com/Mattbusel/llm-trace/main/include/llm_trace.hpp
 curl -O https://raw.githubusercontent.com/Mattbusel/llm-pool/main/include/llm_pool.hpp
@@ -177,6 +189,9 @@ curl -O https://raw.githubusercontent.com/Mattbusel/llm-eval/main/include/llm_ev
 curl -O https://raw.githubusercontent.com/Mattbusel/llm-ab/main/include/llm_ab.hpp
 
 # App
+
+[![Star History Chart](https://api.star-history.com/svg?repos=Mattbusel/llm-cpp&type=Date)](https://star-history.com/#Mattbusel/llm-cpp)
+
 curl -O https://raw.githubusercontent.com/Mattbusel/llm-chat/main/include/llm_chat.hpp
 curl -O https://raw.githubusercontent.com/Mattbusel/llm-agent/main/include/llm_agent.hpp
 curl -O https://raw.githubusercontent.com/Mattbusel/llm-vision/main/include/llm_vision.hpp
