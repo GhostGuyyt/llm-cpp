@@ -1,42 +1,76 @@
 # llm-cpp
 
+![C++17](https://img.shields.io/badge/C%2B%2B-17-blue.svg)
+![MIT License](https://img.shields.io/badge/license-MIT-green.svg)
+![26 Libraries](https://img.shields.io/badge/libraries-26-orange.svg)
+![Zero Deps Core](https://img.shields.io/badge/core_deps-zero-brightgreen.svg)
+
 A suite of 26 single-header C++17 libraries for integrating large language models into native applications. Each library is a self-contained `.hpp` file — drop in what you need, define one implementation macro, and ship. No Python, no SDKs, no package manager required.
+
+---
+
+## Start Here
+
+> **Just want to call an LLM?** → [llm-stream](https://github.com/Mattbusel/llm-stream)
+>
+> **Building a chatbot?** → [llm-chat](https://github.com/Mattbusel/llm-chat) + [llm-retry](https://github.com/Mattbusel/llm-retry)
+>
+> **Building RAG?** → [llm-rag](https://github.com/Mattbusel/llm-rag) + [llm-embed](https://github.com/Mattbusel/llm-embed) + [llm-rank](https://github.com/Mattbusel/llm-rank)
+>
+> **Need production observability?** → [llm-log](https://github.com/Mattbusel/llm-log) + [llm-trace](https://github.com/Mattbusel/llm-trace) + [llm-cost](https://github.com/Mattbusel/llm-cost)
 
 ---
 
 ## The Suite
 
+### Core — foundational primitives every LLM app needs
+
 | Library | Description | Deps |
 |---------|-------------|------|
 | **[llm-stream](https://github.com/Mattbusel/llm-stream)** | Stream OpenAI & Anthropic responses via SSE | libcurl |
-| **[llm-cache](https://github.com/Mattbusel/llm-cache)** | LRU response cache — skip identical API calls | None |
-| **[llm-cost](https://github.com/Mattbusel/llm-cost)** | Token counting + cost estimation for 6 models | None |
 | **[llm-retry](https://github.com/Mattbusel/llm-retry)** | Retry with exponential backoff + circuit breaker | None |
+| **[llm-cost](https://github.com/Mattbusel/llm-cost)** | Token counting + cost estimation for 6 models | None |
+| **[llm-cache](https://github.com/Mattbusel/llm-cache)** | LRU response cache — skip identical API calls | None |
 | **[llm-format](https://github.com/Mattbusel/llm-format)** | JSON schema enforcement + structured output | None |
-| **[llm-embed](https://github.com/Mattbusel/llm-embed)** | Text embeddings + cosine similarity + vector store | libcurl |
-| **[llm-pool](https://github.com/Mattbusel/llm-pool)** | Concurrent request pool with priority queue + rate limiting | None |
-| **[llm-log](https://github.com/Mattbusel/llm-log)** | Structured JSONL logging for every LLM call | None |
-| **[llm-template](https://github.com/Mattbusel/llm-template)** | Mustache-style prompt templating | None |
-| **[llm-agent](https://github.com/Mattbusel/llm-agent)** | Tool-calling agent loop (OpenAI function calling) | libcurl |
-| **[llm-rag](https://github.com/Mattbusel/llm-rag)** | Retrieval-augmented generation pipeline | libcurl |
-| **[llm-eval](https://github.com/Mattbusel/llm-eval)** | N-run evaluation + consistency scoring + model comparison | libcurl |
-| **[llm-chat](https://github.com/Mattbusel/llm-chat)** | Multi-turn conversation manager with token-budget truncation | libcurl |
-| **[llm-vision](https://github.com/Mattbusel/llm-vision)** | Multimodal image+text for OpenAI and Anthropic | libcurl |
-| **[llm-mock](https://github.com/Mattbusel/llm-mock)** | Mock LLM provider for unit testing — zero network | None |
-| **[llm-router](https://github.com/Mattbusel/llm-router)** | Route prompts to the right model by complexity | None |
-| **[llm-guard](https://github.com/Mattbusel/llm-guard)** | PII detection + prompt injection scoring — fully offline | None |
-| **[llm-compress](https://github.com/Mattbusel/llm-compress)** | Context compression: truncate, sliding window, summarize | None* |
-| **[llm-batch](https://github.com/Mattbusel/llm-batch)** | Batch processing with thread pool, rate limiting, checkpointing | libcurl |
-| **[llm-audio](https://github.com/Mattbusel/llm-audio)** | Whisper transcription, translation, and TTS | libcurl |
-| **[llm-finetune](https://github.com/Mattbusel/llm-finetune)** | Fine-tuning job lifecycle: upload, create, poll, manage models | libcurl |
-| **[llm-rank](https://github.com/Mattbusel/llm-rank)** | BM25 + LLM passage reranking, hybrid mode | libcurl* |
-| **[llm-parse](https://github.com/Mattbusel/llm-parse)** | Offline HTML/markdown parsing, chunking, TextStats | None |
-| **[llm-trace](https://github.com/Mattbusel/llm-trace)** | RAII span tracing with OTLP JSON export | None |
-| **[llm-ab](https://github.com/Mattbusel/llm-ab)** | A/B testing with Welch t-test and Cohen d | libcurl |
 | **[llm-json](https://github.com/Mattbusel/llm-json)** | Recursive-descent JSON parser and builder | None |
 
-*llm-compress requires libcurl only for the optional Summarize strategy.
-*llm-rank requires libcurl only for LLM-based reranking (local BM25 mode has zero deps).
+### Data — move, retrieve, and reshape information
+
+| Library | Description | Deps |
+|---------|-------------|------|
+| **[llm-embed](https://github.com/Mattbusel/llm-embed)** | Text embeddings + cosine similarity + vector store | libcurl |
+| **[llm-rag](https://github.com/Mattbusel/llm-rag)** | Retrieval-augmented generation pipeline | libcurl |
+| **[llm-rank](https://github.com/Mattbusel/llm-rank)** | BM25 + LLM passage reranking, hybrid mode | libcurl† |
+| **[llm-compress](https://github.com/Mattbusel/llm-compress)** | Context compression: truncate, sliding window, summarize | None* |
+| **[llm-parse](https://github.com/Mattbusel/llm-parse)** | Offline HTML/markdown parsing, chunking, TextStats | None |
+| **[llm-batch](https://github.com/Mattbusel/llm-batch)** | Batch processing with thread pool, rate limiting, checkpointing | libcurl |
+
+### Ops — observe, test, and operate at scale
+
+| Library | Description | Deps |
+|---------|-------------|------|
+| **[llm-log](https://github.com/Mattbusel/llm-log)** | Structured JSONL logging for every LLM call | None |
+| **[llm-trace](https://github.com/Mattbusel/llm-trace)** | RAII span tracing with OTLP JSON export | None |
+| **[llm-pool](https://github.com/Mattbusel/llm-pool)** | Concurrent request pool with priority queue + rate limiting | None |
+| **[llm-mock](https://github.com/Mattbusel/llm-mock)** | Mock LLM provider for unit testing — zero network | None |
+| **[llm-eval](https://github.com/Mattbusel/llm-eval)** | N-run evaluation + consistency scoring + model comparison | libcurl |
+| **[llm-ab](https://github.com/Mattbusel/llm-ab)** | A/B testing with Welch t-test and Cohen d | libcurl |
+
+### App — build complete user-facing features
+
+| Library | Description | Deps |
+|---------|-------------|------|
+| **[llm-chat](https://github.com/Mattbusel/llm-chat)** | Multi-turn conversation manager with token-budget truncation | libcurl |
+| **[llm-agent](https://github.com/Mattbusel/llm-agent)** | Tool-calling agent loop (OpenAI function calling) | libcurl |
+| **[llm-vision](https://github.com/Mattbusel/llm-vision)** | Multimodal image+text for OpenAI and Anthropic | libcurl |
+| **[llm-template](https://github.com/Mattbusel/llm-template)** | Mustache-style prompt templating | None |
+| **[llm-router](https://github.com/Mattbusel/llm-router)** | Route prompts to the right model by complexity | None |
+| **[llm-guard](https://github.com/Mattbusel/llm-guard)** | PII detection + prompt injection scoring — fully offline | None |
+| **[llm-audio](https://github.com/Mattbusel/llm-audio)** | Whisper transcription, translation, and TTS | libcurl |
+| **[llm-finetune](https://github.com/Mattbusel/llm-finetune)** | Fine-tuning job lifecycle: upload, create, poll, manage models | libcurl |
+
+\*llm-compress requires libcurl only for the optional Summarize strategy.
+†llm-rank requires libcurl only for LLM-based reranking; local BM25 mode has zero deps.
 
 ---
 
@@ -118,37 +152,39 @@ int main() {
 Each library is a single `.hpp` file. Copy what you need:
 
 ```bash
-# Network libraries (require libcurl)
+# Core
 curl -O https://raw.githubusercontent.com/Mattbusel/llm-stream/main/include/llm_stream.hpp
+curl -O https://raw.githubusercontent.com/Mattbusel/llm-retry/main/include/llm_retry.hpp
+curl -O https://raw.githubusercontent.com/Mattbusel/llm-cost/main/include/llm_cost.hpp
+curl -O https://raw.githubusercontent.com/Mattbusel/llm-cache/main/include/llm_cache.hpp
+curl -O https://raw.githubusercontent.com/Mattbusel/llm-format/main/include/llm_format.hpp
+curl -O https://raw.githubusercontent.com/Mattbusel/llm-json/main/include/llm_json.hpp
+
+# Data
 curl -O https://raw.githubusercontent.com/Mattbusel/llm-embed/main/include/llm_embed.hpp
-curl -O https://raw.githubusercontent.com/Mattbusel/llm-agent/main/include/llm_agent.hpp
 curl -O https://raw.githubusercontent.com/Mattbusel/llm-rag/main/include/llm_rag.hpp
-curl -O https://raw.githubusercontent.com/Mattbusel/llm-eval/main/include/llm_eval.hpp
-curl -O https://raw.githubusercontent.com/Mattbusel/llm-chat/main/include/llm_chat.hpp
-curl -O https://raw.githubusercontent.com/Mattbusel/llm-vision/main/include/llm_vision.hpp
+curl -O https://raw.githubusercontent.com/Mattbusel/llm-rank/main/include/llm_rank.hpp
+curl -O https://raw.githubusercontent.com/Mattbusel/llm-compress/main/include/llm_compress.hpp
+curl -O https://raw.githubusercontent.com/Mattbusel/llm-parse/main/include/llm_parse.hpp
 curl -O https://raw.githubusercontent.com/Mattbusel/llm-batch/main/include/llm_batch.hpp
 
-# Pure C++17 — zero external deps
-curl -O https://raw.githubusercontent.com/Mattbusel/llm-cache/main/include/llm_cache.hpp
-curl -O https://raw.githubusercontent.com/Mattbusel/llm-cost/main/include/llm_cost.hpp
-curl -O https://raw.githubusercontent.com/Mattbusel/llm-retry/main/include/llm_retry.hpp
-curl -O https://raw.githubusercontent.com/Mattbusel/llm-format/main/include/llm_format.hpp
-curl -O https://raw.githubusercontent.com/Mattbusel/llm-pool/main/include/llm_pool.hpp
+# Ops
 curl -O https://raw.githubusercontent.com/Mattbusel/llm-log/main/include/llm_log.hpp
-curl -O https://raw.githubusercontent.com/Mattbusel/llm-template/main/include/llm_template.hpp
+curl -O https://raw.githubusercontent.com/Mattbusel/llm-trace/main/include/llm_trace.hpp
+curl -O https://raw.githubusercontent.com/Mattbusel/llm-pool/main/include/llm_pool.hpp
 curl -O https://raw.githubusercontent.com/Mattbusel/llm-mock/main/include/llm_mock.hpp
+curl -O https://raw.githubusercontent.com/Mattbusel/llm-eval/main/include/llm_eval.hpp
+curl -O https://raw.githubusercontent.com/Mattbusel/llm-ab/main/include/llm_ab.hpp
+
+# App
+curl -O https://raw.githubusercontent.com/Mattbusel/llm-chat/main/include/llm_chat.hpp
+curl -O https://raw.githubusercontent.com/Mattbusel/llm-agent/main/include/llm_agent.hpp
+curl -O https://raw.githubusercontent.com/Mattbusel/llm-vision/main/include/llm_vision.hpp
+curl -O https://raw.githubusercontent.com/Mattbusel/llm-template/main/include/llm_template.hpp
 curl -O https://raw.githubusercontent.com/Mattbusel/llm-router/main/include/llm_router.hpp
 curl -O https://raw.githubusercontent.com/Mattbusel/llm-guard/main/include/llm_guard.hpp
-curl -O https://raw.githubusercontent.com/Mattbusel/llm-compress/main/include/llm_compress.hpp
-
-# New libraries (Extension 4)
 curl -O https://raw.githubusercontent.com/Mattbusel/llm-audio/main/include/llm_audio.hpp
 curl -O https://raw.githubusercontent.com/Mattbusel/llm-finetune/main/include/llm_finetune.hpp
-curl -O https://raw.githubusercontent.com/Mattbusel/llm-rank/main/include/llm_rank.hpp
-curl -O https://raw.githubusercontent.com/Mattbusel/llm-parse/main/include/llm_parse.hpp
-curl -O https://raw.githubusercontent.com/Mattbusel/llm-trace/main/include/llm_trace.hpp
-curl -O https://raw.githubusercontent.com/Mattbusel/llm-ab/main/include/llm_ab.hpp
-curl -O https://raw.githubusercontent.com/Mattbusel/llm-json/main/include/llm_json.hpp
 ```
 
 In exactly **one** `.cpp` file per library, define the implementation macro before including:
