@@ -1,6 +1,6 @@
 # llm-cpp
 
-A suite of 19 single-header C++17 libraries for integrating large language models into native applications. Each library is a self-contained `.hpp` file — drop in what you need, define one implementation macro, and ship. No Python, no SDKs, no package manager required.
+A suite of 26 single-header C++17 libraries for integrating large language models into native applications. Each library is a self-contained `.hpp` file — drop in what you need, define one implementation macro, and ship. No Python, no SDKs, no package manager required.
 
 ---
 
@@ -27,8 +27,16 @@ A suite of 19 single-header C++17 libraries for integrating large language model
 | **[llm-guard](https://github.com/Mattbusel/llm-guard)** | PII detection + prompt injection scoring — fully offline | None |
 | **[llm-compress](https://github.com/Mattbusel/llm-compress)** | Context compression: truncate, sliding window, summarize | None* |
 | **[llm-batch](https://github.com/Mattbusel/llm-batch)** | Batch processing with thread pool, rate limiting, checkpointing | libcurl |
+| **[llm-audio](https://github.com/Mattbusel/llm-audio)** | Whisper transcription, translation, and TTS | libcurl |
+| **[llm-finetune](https://github.com/Mattbusel/llm-finetune)** | Fine-tuning job lifecycle: upload, create, poll, manage models | libcurl |
+| **[llm-rank](https://github.com/Mattbusel/llm-rank)** | BM25 + LLM passage reranking, hybrid mode | libcurl* |
+| **[llm-parse](https://github.com/Mattbusel/llm-parse)** | Offline HTML/markdown parsing, chunking, TextStats | None |
+| **[llm-trace](https://github.com/Mattbusel/llm-trace)** | RAII span tracing with OTLP JSON export | None |
+| **[llm-ab](https://github.com/Mattbusel/llm-ab)** | A/B testing with Welch t-test and Cohen d | libcurl |
+| **[llm-json](https://github.com/Mattbusel/llm-json)** | Recursive-descent JSON parser and builder | None |
 
 *llm-compress requires libcurl only for the optional Summarize strategy.
+*llm-rank requires libcurl only for LLM-based reranking (local BM25 mode has zero deps).
 
 ---
 
@@ -132,6 +140,15 @@ curl -O https://raw.githubusercontent.com/Mattbusel/llm-mock/main/include/llm_mo
 curl -O https://raw.githubusercontent.com/Mattbusel/llm-router/main/include/llm_router.hpp
 curl -O https://raw.githubusercontent.com/Mattbusel/llm-guard/main/include/llm_guard.hpp
 curl -O https://raw.githubusercontent.com/Mattbusel/llm-compress/main/include/llm_compress.hpp
+
+# New libraries (Extension 4)
+curl -O https://raw.githubusercontent.com/Mattbusel/llm-audio/main/include/llm_audio.hpp
+curl -O https://raw.githubusercontent.com/Mattbusel/llm-finetune/main/include/llm_finetune.hpp
+curl -O https://raw.githubusercontent.com/Mattbusel/llm-rank/main/include/llm_rank.hpp
+curl -O https://raw.githubusercontent.com/Mattbusel/llm-parse/main/include/llm_parse.hpp
+curl -O https://raw.githubusercontent.com/Mattbusel/llm-trace/main/include/llm_trace.hpp
+curl -O https://raw.githubusercontent.com/Mattbusel/llm-ab/main/include/llm_ab.hpp
+curl -O https://raw.githubusercontent.com/Mattbusel/llm-json/main/include/llm_json.hpp
 ```
 
 In exactly **one** `.cpp` file per library, define the implementation macro before including:
@@ -162,4 +179,4 @@ All other translation units just `#include` without the macro.
 
 ## License
 
-All 19 libraries: MIT — Copyright (c) 2026 Mattbusel.
+All 26 libraries: MIT — Copyright (c) 2026 Mattbusel.
