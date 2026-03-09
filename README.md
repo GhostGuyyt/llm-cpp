@@ -231,3 +231,10 @@ All other translation units just `#include` without the macro.
 ## License
 
 All 26 libraries: MIT — Copyright (c) 2026 Mattbusel.
+
+
+---
+## Related Projects by @Mattbusel
+- [Special-Relativity-in-Financial-Modeling](https://github.com/Mattbusel/Special-Relativity-in-Financial-Modeling) -- C++ special relativity / Lorentz transform applied to OHLCV financial modeling
+- [LLMTokenStreamQuantEngine](https://github.com/Mattbusel/LLMTokenStreamQuantEngine) -- C++ engine combining LLM token streams with quantitative trading signals
+- [llm-stream](https://github.com/Mattbusel/llm-stream) -- Single-header C++ streaming library for OpenAI and Anthropic APIs
